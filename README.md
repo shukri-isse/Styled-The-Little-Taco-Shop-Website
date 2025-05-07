@@ -33,14 +33,10 @@ To view this project, clone the repository and open the HTML files in a browser.
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/shukri-isse/Styled-The-Little-Taco-Shop-Website.git
+   git clone git clone https://github.com/shukri-isse/css-tutorial-project.git
 2. Open index.html in your preferred web browser.
-
-git clone https://github.com/shukri-isse/css-tutorial-project.git
-
-
+   
 ### Acknowledgments
-
 This project was built independently using the concepts taught in the "CSS Tutorial - Full Course for Beginners" by Dave Gray (@gitdagray).
 
 Watch the full tutorial here:
