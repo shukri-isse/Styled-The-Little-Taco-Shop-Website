@@ -1,0 +1,442 @@
+/* import google font */
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito&display=swap');
+
+/* || CSS RESET */
+*, 
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    /* makes the image a block-level element instead of inline*/
+    /* removes little white space below images */
+    display: block;
+    /* makes images responsive*/
+    max-width: 100%;
+    height: auto;
+}
+
+/* form elements do not inherit font */
+input, 
+button, 
+textarea {
+    font: inherit;
+}
+
+/* || VARIABLES */
+/* root selector */
+:root {
+    /* FONTS */
+    --FF: "Nunito", sans-serif;
+    --FF-HEADINGS: "Fugaz One", cursive;
+    /* clamp allows font to grow and shrink, ideal size 2.2 viewport units by height to minimum 1rem and max 1.5rem*/
+    --FS: clamp(1rem, 2.2vh, 1.5rem);
+
+    /* COLORS */
+    --BGCOLOR-FADE: rgb(252, 220, 160);
+    --BGCOLOR: orange;
+    /* background image with linear gradient */
+    --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE));
+    --BODY-BGCOLOR: #fff;
+    /* flat black color */
+    --BORDER-COLOR: #333;
+    --BUTTON-COLOR: #fff;
+    --FONT-COLOR: #000;
+    --HEADER-BGCOLOR: #000;
+    --HEADER-COLOR: #fff;
+    /* rgba includes a transparency  */
+    --HERO-BGCOLOR: rgba(51, 178, 51, 0.75);
+    --HERO-COLOR: #fff;
+    --HIGHLIGHT-COLOR: rgb(51, 178, 51);
+    --LINK-ACTIVE: orange;
+    --LINK-COLOR: #000;
+    /* same black color but a lil transparent */
+    --LINK-HOVER: hsl(0, 0%, 0%, 0.6);
+    --NAV-BGCOLOR: #fff;
+
+    /* BORDERS */
+    --BORDERS:  1px solid var(--BORDER-COLOR);
+    --BORDER-RADIUS: 15px;
+
+    /* STANDARD PADDING */
+    --PADDING-TOP-BOTTOM: 0.25em;
+    --PADDING-SIDE: 2.5%;
+
+    /* STANDARD MARGIN */
+    /* apply clamp to top and bottom margins (ideal size of 2.5 vieweport units height but will shrink to 1em or grow to 1.5em as needed ) */
+    /* margin left and right will be 0 */
+    --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+}
+
+/* set up datk mode */
+@media (prefers-color-scheme: dark) {
+    /*  overwrite*/
+    :root {
+        --BGCOLOR-FADE: gray;
+        --BGCOLOR: #000;
+        --BODY-BGCOLOR: #333;
+        --BORDER-COLOR: whitesmoke;
+        --BUTTON-COLOR: #000;
+        --FONT_COLOR: whitesmoke;
+        --HEADER-COLOR: whitesmoke;
+        --HERO-COLOR: #333;
+        --HIGHLIGHT-COLOR: whitesmoke;
+        --LINK-ACTIVE: rgb(252, 200, 103);
+        --LINK-COLOR: whitesmoke;
+        --LINK-HOVER: orange;
+        --NAV-BGCOLOR: rgb(20, 20, 20);
+    }
+}
+
+/* || UTILITY CLASSES */
+/* offscreen class to move elements off screen but keep in doc flow so screenreader can read content */
+.offscreen {
+    position: absolute;
+    left: -10000px;
+}
+
+/* nowrap class ensures text does not wrap over next line*/
+.nowrap {
+    white-space: nowrap;
+}
+
+/* center class for centering text in paragraph or heading */
+.center {
+    text-align: center;
+}
+
+/* || GENERAL STYLES */
+
+/* html element */
+html {
+    /* allows smooth transition when we link to othe parts of page */
+    scroll-behavior: smooth;
+    font-size: var(--FS);
+    font-family: var(--FF);
+    /* this will be fallback incase background image doesn't show */
+    background-color: var(--BGCOLOR);
+    background-image: var(--BGIMAGE);
+}
+
+body {
+    background-color: var(--BODY-BGCOLOR);
+    color: var(--FONT-COLOR);
+    /* min height of 100 viewport units or length of browser */
+    min-height: 100vh;
+    max-width: 800px;
+    /* to center body give margin of 0 on top and bottom and auto on left and right */
+    margin: 0 auto;
+    /* left border */
+    border-left: var(--BORDERS); 
+    /* right border */
+    border-right: var(--BORDERS); 
+    /* box shadow or shadow with x of 0, y of 0, blur of 10px in color --BORDER-COLOR */
+    box-shadow: 0 0 10px var(--BORDER-COLOR);
+}
+
+h1, 
+h2, 
+h3 {
+    font-family: var(--FF-HEADINGS);
+    letter-spacing: 0.1em;
+}
+
+h2, 
+h3 {
+    margin-bottom: 1em;
+    color: var(--HIGHLIGHT-COLOR);
+}
+
+p {
+    line-height: 1.5;
+}
+
+/* any-link psuedo class selector for visited and unvisited links */
+a:any-link{
+    color: var(--LINK-COLOR);
+}
+
+/* when you hover over link */
+/* focus-visible applies only when it’s focused using a keyboard (e.g., Tab key) but not when clicked with a mouse */
+a:hover, a:focus-visible {
+    color: var(--LINK-HOVER);
+}
+
+/* active state: when you hold down on link (while it is being clicked or activated) */
+a:active{
+    color: var(--LINK-ACTIVE);
+}
+
+/* || HEADER */
+
+.header {
+    /* heading will stay put at top even when you scroll */
+    position: sticky;
+    top: 0;
+    /* heading will stay on top of everything else that might scroll under it*/
+    z-index: 1;
+}
+
+.header__h1{
+    text-align: center;
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    padding: var(--PADDING-TOP-BOTTOM) var(--PADDING-SIDE);
+}
+
+.header__nav {
+    background-color: var(--NAV-BGCOLOR);
+    border-bottom: var(--BORDERS);
+    font-weight: bold;
+    box-shadow: 0 6px 5px -5px var(--BORDER-COLOR);
+}
+
+.header__ul{
+    padding: var(--PADDING-TOP-BOTTOM) var(--PADDING-SIDE);
+    /* remove bullet points */
+    list-style-type: none;
+    /* makes .header__ul a flex container and it'c children <li> flex items */
+    /* this is by default a row instead of a column */
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+/* || HERO */
+.hero {
+    /* set postion to relative b/c we will place something with position: absolute inside this parent container */
+    position: relative;
+}
+
+.hero__h2{
+    background-color: var(--HERO-BGCOLOR);
+    color: var(--HERO-COLOR);
+    padding: 0.25em 0.5em;
+    text-shadow: 2px 2px 5px var(--BORDER-COLOR);
+    /* removes element from doc flow */
+    position: absolute;
+    /*will make it dissapear, with animation we will make this drop down and reappear */
+    top: -100px;
+    left: 20px;
+    animation: showWelcome 0.5s ease-in-out 1s forwards;
+}
+
+@keyframes showWelcome{
+    0% {
+        top: -20px;
+        /* make it lean a lil */
+        transform: skew(0deg, -5deg) scaleY(0);
+    }
+    80% {
+        top: 30px;
+        transform: skew(10deg, -5deg) scaleY(1.2);
+    }
+    100% {
+        top: 20px;
+        transform: skew(-10deg, -5deg) scaleY(1);
+    }
+}
+
+/* || FOOTER */
+.footer {
+    /* keeps footer at bottom even when you scroll up */
+    position: sticky;
+    bottom: 0;
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    padding: var(--PADDING-TOP-BOTTOM) var(--PADDING-SIDE);
+    text-align: center;
+}
+
+/* || MAIN */
+.main {
+    padding: var(--PADDING-TOP-BOTTOM) var(--PADDING-SIDE);
+
+}
+
+.main__article {
+    scroll-margin-top: 6.5rem;
+    margin: var(--MARGIN);
+}
+
+/* first article on main section */
+.main__article:first-child {
+    margin-top: 1em;
+}
+
+/* gives extra scrolling room to last article on main section */
+.main__article:last-child {
+    min-height: calc(100vh - 20rem);
+}
+
+/* || ABOUT */
+.about__trivia {
+    margin: var(--MARGIN);
+}
+
+.about__trivia-answer {
+    margin-top: 1em;
+}
+
+/* || CONTACT */
+.contact__h2 {
+    margin: 0;
+}
+
+.contact__fieldset {
+    /* removes border */
+    border: none;
+}
+
+.contact__p {
+    margin: 1em 0;
+}
+
+.contact__label {
+    display: block;
+    font-weight: bold;
+}
+
+.contact__input,
+.contact__textarea {
+    padding: 0.5em;
+    /* should be a variable */
+    border-radius: var(--BORDER-RADIUS);
+    border-width: 2px;
+    width: 100%;
+}
+
+.contact__button {
+    padding: 0.5em;
+    /* should be a variable */
+    border-radius: var(--BORDER-RADIUS);
+    background-color: var(--HIGHLIGHT-COLOR);
+    color: var(--BUTTON-COLOR);
+    font-weight: bold;
+}
+
+/* take html table and make it a grid. Grid needs flat structure for grid items, won't look at sub-grid items */
+/* table is not flat it has parent elements like thead tr th and td */
+/* display: contents makes an element's children behave as if they were direct children of the element's parent, 
+while the element itself is ignored in terms of layout. e.g ignoreing parent element and flatte elements for grid to use without removing themn*/
+
+/* || MENU */
+/* display contents class necessry for larger project. But this is a small project with only 1 table in project so it's ok */
+thead, 
+tbody, 
+tfoot, 
+tr {
+    display: contents;
+}
+
+/* applied to table element itself */
+.menu__container {
+    display: grid;
+
+    /* You are mapping the table structure to a grid layout.
+    The grid-template-areas property assigns labels to grid cells. */
+    grid-template-columns: repeat(3, 1fr);
+    /* some elements in the menu should span multiple grid cells in the CSS Grid layout */
+
+    /* hd1, hd2, hd3 represent the headers (Tacos, Quantity, Price). */
+
+    /* cr represents the Crunchy Taco category. */
+    /* cr1, cr1p represent Crunchy Taco - 1 quantity and its price.
+    cr2, cr2p represent Crunchy Taco - 2 quantity and its price.
+    cr3, cr3p represent Crunchy Taco - 3 quantity and its price */
+
+    /* sf represents the Soft Taco category. */
+    /* sf1, sf1p represent Soft Taco - 1 quantity and its price.
+    sf2, sf2p represent Soft Taco - 2 quantity and its price.
+    sf3, sf3p represent Soft Taco - 3 quantity and its price. */
+    /* cs represents Chips & Salsa, which spans the entire row. */
+    grid-template-areas: 
+        "hd1 hd2 hd3"
+        "cr cr1 cr1p"
+        "cr cr2 cr2p"
+        "cr cr3 cr3p"
+        "sf sf1 sf1p"
+        "sf sf2 sf2p"
+        "sf sf3 sf3p"
+        "cs cs cs";
+    gap: 0.1em;
+    margin-bottom: 1em;
+}
+
+.menu__cr {
+    /* grid area label */
+    grid-area: cr;
+}
+
+.menu__sf {
+    /* grid area label */
+    grid-area: sf;
+}
+
+.menu__cs {
+    grid-area: cs;
+}
+
+.menu__cr, 
+.menu__sf, 
+.menu__cs,
+.menu__header {
+    color: var(--HIGHLIGHT-COLOR);
+    font-weight: bold;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.menu__header, .menu__item {
+    width: 100%;
+    padding: 1em;
+    border: medium ridge var(--BORDER-COLOR);
+}
+
+.menu__item {
+    display: grid;
+    place-content: center;
+}
+
+/* first cell of th inside of the thead */
+thead th:first-child {
+    /* rounds corners of first cell*/
+    border-top-left-radius: var(--BORDER-RADIUS);
+}
+
+/* first cell of th inside of the thead */
+thead th:last-child {
+    /* rounds corners of last cell*/
+    border-top-right-radius: var(--BORDER-RADIUS);
+}
+
+/* last cell or table footer */
+tfoot td {
+     /* rounds corners of bottom cell*/
+     border-bottom-left-radius: var(--BORDER-RADIUS);
+     border-bottom-right-radius: var(--BORDER-RADIUS);
+ }
+
+ /* media query */
+ /* applies styles only when the screen is at least 576px wide  */
+@media screen and (min-width: 576px) {
+    /* ::before pseudo-element inserts content before the .header__h1 */
+    .header__h1::before {
+        content: '🌮 '
+    }
+    /* ::after pseudo-element inserts content after the .header__h1 element */
+    .header__h1::after {
+        content: ' 🌮'
+    }
+
+    .menu__header,
+    .menu__cr,
+    .menu__sf,
+    .menu__cs {
+        font-size: 125%;
+    }
+}
