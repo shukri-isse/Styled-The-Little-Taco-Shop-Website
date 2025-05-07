@@ -7,7 +7,13 @@ A multi-page website built independently while following Dave Gray’s "CSS Tuto
 - **Pages:**
   - `index.html` – Main landing page
   - `about.html` – About section
-  - `style-guide.html` – Demonstrates various CSS features and components
+  - `hours.html` – Business hours
+  - `contact.html` – Contact information
+  - `favicon.ico` – Site icon
+  - `README.md` – Project documentation
+  - `css/styles.css` – Main stylesheet
+  - `js/main.js` – Main JavaScript file
+  - `img/` – Folder containing image assets
 
 - **Features:**
   - External stylesheet (`css/styles.css`)
@@ -27,7 +33,7 @@ To view this project, clone the repository and open the HTML files in a browser.
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/shukri-isse/styled-the-little-taco-shop-website.git
+   git clone https://github.com/shukri-isse/Styled-The-Little-Taco-Shop-Website.git
 2. Open index.html in your preferred web browser.
 
 git clone https://github.com/shukri-isse/css-tutorial-project.git
