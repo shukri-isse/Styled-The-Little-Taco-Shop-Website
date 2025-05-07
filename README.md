@@ -1,4 +1,4 @@
-# Styled-The-Little-Taco-Shop-Website
+# Styled The Little Taco Shop Website
 
 A multi-page website built independently while following Dave Gray’s "CSS Tutorial - Full Course for Beginners" on YouTube. This project showcases foundational CSS concepts including selectors, layout techniques, and responsive design.
 
