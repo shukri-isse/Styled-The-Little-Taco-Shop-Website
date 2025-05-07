@@ -38,4 +38,4 @@ git clone https://github.com/shukri-isse/css-tutorial-project.git
 This project was built independently using the concepts taught in the "CSS Tutorial - Full Course for Beginners" by Dave Gray (@gitdagray).
 
 Watch the full tutorial here:
-https://www.youtube.com/watch?v=n4R2E7O-Ngo&t=35378s
+https://www.youtube.com/watch?v=n4R2E7O-Ngo
